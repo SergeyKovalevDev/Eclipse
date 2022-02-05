@@ -1,6 +1,7 @@
 package taskPackage;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Animal {
 	
@@ -40,6 +41,23 @@ public class Animal {
 	public String toString() {
 		return "Animal [breed=" + breed + ", name=" + name + ", "
 				+ "age=" + age + ", creationDate=" + creationDate + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(age, breed, name);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Animal other = (Animal) obj;
+		return Objects.equals(age, other.age) && Objects.equals(breed, other.breed) && Objects.equals(name, other.name);
 	}
 
 	
